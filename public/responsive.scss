@@ -1,0 +1,65 @@
+// Define your breakpoints
+$breakpoints: (
+  'small': 480px,
+  'medium': 768px,
+  'large': 1024px,
+  'extra-large': 1280px,
+);
+
+// Mixin for media queries
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Base styles (mobile first)
+body {
+  font-family: 'Arial', sans-serif;
+  // Other base styles
+}
+
+.container {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+
+  // Styles for larger screens
+  @include respond-to('medium') {
+    width: 750px;
+    margin: 0 auto;
+  }
+
+  @include respond-to('large') {
+    width: 970px;
+  }
+
+  @include respond-to('extra-large') {
+    width: 1170px;
+  }
+}
+
+// Example of a responsive menu
+.menu {
+  background: #333;
+  color: white;
+
+  // Menu for mobile
+  .menu-item {
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid #474747;
+  }
+
+  // Adjust menu for larger screens
+  @include respond-to('medium') {
+    .menu-item {
+      display: inline-block;
+      border: none;
+    }
+  }
+}

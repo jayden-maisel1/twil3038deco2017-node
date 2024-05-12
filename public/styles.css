@@ -1,0 +1,469 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+/* Grid containers*/
+
+
+.container {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 0.9fr 1.2fr 0.9fr; 
+  grid-template-rows: 0.3fr 1.7fr; 
+  gap: 40px 0px; 
+  grid-template-areas: 
+    "header header header"
+    "Profile Cal Log"; 
+}
+
+.Profile {  display: grid;
+  grid-template-columns: 0.6fr 1.8fr 0.6fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". pic ."
+    "graph-1 graph-1 graph-1"
+    "graph-2 graph-2 graph-2";
+  grid-area: Profile;
+}
+
+.pic { grid-area: pic;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide overflowing content */
+  border-radius: 50%; /* Make the container circular */
+  width: 100%; /* Adjust the width of the circular container */
+  height: auto; /* Adjust the height of the circular container */}
+
+.pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%; /* Make the image circular */
+}
+
+.graph-1 { grid-area: graph-1; }
+
+
+  @keyframes bake-pie {
+    from {
+      transform: rotate(0deg) translate3d(0,0,0);
+    }
+  }
+  
+  body {
+    font-family: "Open Sans", Arial;
+    background: #EEE;
+  }
+  main {
+    width: 400px;
+    margin: 30px auto;
+  }
+  .graph-1 {
+    text-align: center; /* Centers the text within the div */
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  section {
+    margin-top: 30px;
+  }
+  .pieID {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .pie {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    margin: 0 30px 30px 0;
+  }
+  .pie::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    background: #EEE;
+    border-radius: 50%;
+    top: 50px;
+    left: 50px;
+  }
+  .pie::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 3px 4px rgba(0,0,0,0.1);
+    margin: 220px auto;
+    
+  }
+  .slice {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    clip: rect(0px, 200px, 200px, 100px);
+    animation: bake-pie 1s;
+  }
+  .slice span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    clip: rect(0px, 200px, 200px, 100px);
+  }
+  .legend {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    padding: 15px;
+    font-size: 13px;
+    box-shadow: 1px 1px 0 #DDD,
+                2px 2px 0 #BBB;
+  }
+  .legend li {
+    width: 110px;
+    height: 1.25em;
+    margin-bottom: 0.7em;
+    padding-left: 0.5em;
+    border-left: 1.25em solid black;
+  }
+  .legend em {
+    font-style: normal;
+  }
+  .legend span {
+    float: right;
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 13px;
+    background: #DDD;
+    padding: 5px 10px;
+    margin: 5px;
+  }
+  
+
+.graph-2 { grid-area: graph-2; }
+
+/*Logs */.Log {  
+  display: flex; /* Use flexbox to stack log boxes vertically */
+  flex-direction: column; /* Stack items vertically */
+  gap: 20px; /* Add space between log boxes */
+  padding: 20px; /* Add padding if needed */
+}
+
+.log-1, .log-2, .log-3 {  
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 10px solid red;
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: auto; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Title Title Title"
+    "img img info"; 
+}
+
+.Title { grid-area: Title; }
+.img { grid-area: img; }
+.info { grid-area: info; }
+
+.log-1 h3 {
+  text-align: center; /* Center the title */
+}
+
+.log-1 img {
+  width: 100%;
+  height: auto;
+  padding-top: 30px;    /* Padding at the top of the image */
+  padding-bottom: 10px; /* Padding at the bottom of the image */
+  padding-right: 30px; /* Add semicolon at the end */
+}
+
+.log-1 .info p {
+  text-align: justify; /* text beside the image */
+  padding-top: 40px;    /* Padding at the top */
+}
+
+.log-1, .log-2, .log-3 {  
+  width: auto;
+  height: auto;
+  padding: 50px;
+  border: 10px solid red;
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: auto; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Title Title Title"
+    "img img info"; 
+}
+
+.Title { grid-area: Title; }
+.img { grid-area: img; }
+.info { grid-area: info; }
+
+.log-1 h3 {
+  text-align: center; /* Center the title */
+}
+
+.log-1 img {
+  width: 100%;
+  height: auto;
+  padding-top: 30px;    /* Padding at the top of the image */
+  padding-bottom: 10px; /* Padding at the bottom of the image */
+  padding-right: 30px; /* Add semicolon at the end */
+}
+
+.log-1 .info p {
+  text-align: justify; /* text beside the image */
+  padding-top: 40px;    /* Padding at the top */
+}
+
+.log-4 { grid-area: log-4; }
+
+
+.header {  display: grid;
+  grid-template-columns: 1fr 1.7fr 0.3fr;
+  grid-template-rows: 0.3fr 2.3fr 0.4fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    ". . notification"
+    ". . .";
+  grid-area: header;
+   background-color: #B38B00; /* Add your desired color here */
+}
+
+.notification { grid-area: notification; }
+
+.notifier {
+  position: relative;
+  display: inline-block;
+}
+
+.bell {
+  position: absolute;
+  top: -5px;
+  left: 24px;
+  padding: 0 5px;
+  font-size: 16px;
+  line-height: 22px;
+  height: 22px;
+  font-size: 26px;
+  color: #FFF;
+  transition: 0.3s;
+}
+
+.bell:hover {
+  color: #EF476F;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  left: 24px;
+  padding: 0 5px;
+  font-size: 16px;
+  line-height: 22px;
+  height: 22px;
+  background: #EF476F;
+  color: #FFF;
+  border-radius: 11px;
+  white-space: nowrap;
+}
+
+.notifier.new .badge {
+  animation: pulse 2s ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  40% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+
+  55% {
+    transform: scale3d(1, 1, 1);
+  }
+  
+  60% {
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+
+  65% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.Cal { grid-area: Cal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none; }
+
+
+/* Calendar styles */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #FFF1BF;
+}
+
+.container .calendar{
+    width: 546px;
+    height: 622px;
+    background-color: #FFF1BF;
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2);
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+}
+
+.calendar .month{
+    width: 100%;
+    background-color: #FFA500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 35px 30px 40px 30px;
+    text-align: center;
+}
+
+.month h2{
+    font-size: 32px;
+    margin-top: 25px;
+}
+
+.month p{
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.month .arrow{
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.month .arrow:hover{
+    background-color: #FFCC6D;
+}
+
+
+.container .week{
+    display: flex;
+    background-color: #FFCC6D;
+    color: #fff;
+}
+
+.week div{
+    width: 14.28%;
+    text-align: center;
+    padding: 10px 0px;
+    transition: 0.4s;
+}
+
+.week .active{
+    background-color: #FFBF48;
+}
+
+.week div:hover{
+    background-color: #FFA500;
+}
+
+
+.container .dates{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.dates div{
+    width: 74px;
+    height: 55px;
+    margin: 2px;
+    margin-top: 1.7px;
+    text-align: center;
+    line-height: 53px;
+    border: 3px solid #e9e9e9;
+}
+/*dates.today no longer showing up???*/
+.dates .today{
+    background-color: #FFBF48;
+    color: #cf9145;
+}
+
+.dates .today:hover{
+    background-color: #FFA500;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.dates div:hover:not(.today){
+    border: 3px;
+    background-color: #FFA500;
+    color: #FFF;
+    /* font-size: 600; */
+    cursor: pointer;
+}
+
+.dates div:nth-child(n+36):hover{
+    -webkit-box-reflect: above 4px linear-gradient(transparent, #0000004d);
+}
+
+
+.calendar .dates div:nth-child(n+43){
+    border: none !important;
+    cursor: auto !important;
+    background: none !important;
+}
+
+.dates .prev, .dates .next{
+    opacity: 0.5;
+}
+
+.dates .prev:hover,
+.dates .next:hover{
+    opacity: 1;
+}
+
+/* Popup container */
+.popup {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  width: 300px; /* Adjust width as needed */
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Show popup when it's visible */
+.popup.show {
+  display: block;
+}
