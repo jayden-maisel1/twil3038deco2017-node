@@ -13,6 +13,31 @@
     "Profile Cal Log"; /* Assign the middle area to Cal and the rightmost area to Log */
 }
 
+/* Media query for screens with a max-width of 768px */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Stack all columns on top of each other */
+    grid-template-rows: auto; /* Adjust row size to fit content */
+    grid-template-areas: 
+      "header"
+      "Profile"
+      "Cal"
+      "Log";
+  }
+}
+/* Media query for screens with a max-width of 768px */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Stack all columns on top of each other */
+    grid-template-rows: auto; /* Adjust row size to fit content */
+    grid-template-areas: 
+      "header"
+      "Profile"
+      "Cal"
+      "Log";
+  }
+}
+
 .Profile {  display: grid;
   grid-template-columns: 0.6fr 1.8fr 0.6fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -165,7 +190,7 @@
   width: auto;
   height: auto;
   padding: 50px;
-  border: 10px solid red;
+  border: 10px solid rgb(255, 212, 69);
   display: grid; 
   grid-template-columns: repeat(2, 1fr); 
   grid-template-rows: auto; 
@@ -188,7 +213,7 @@
   height: auto;
   padding-top: 30px;    /* Padding at the top of the image */
   padding-bottom: 10px; /* Padding at the bottom of the image */
-  padding-right: 30px; /* Add semicolon at the end */
+  padding-right: 30px; 
 }
 
 .log-1 .info p {
@@ -323,7 +348,8 @@
 /* Calendar styles */
 
 *{
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     box-sizing: border-box;
 }
