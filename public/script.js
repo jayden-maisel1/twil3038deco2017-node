@@ -186,3 +186,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+//bar chart 
+document.addEventListener('DOMContentLoaded', function() {
+  const data = {
+    'January': 20,
+    'February': 18,
+    'March': 22,
+    'April': 15,
+    'May': 25,
+    'June': 10,
+    'July': 18,
+    'August': 20,
+    'September': 17,
+    'October': 23,
+    'November': 19,
+    'December': 21
+  };
+
+  const chart = document.getElementById('chart');
+
+  const maxValue = Math.max(...Object.values(data));
+  const scale = 100 / maxValue; // Scale bars to fit in the container
+
+  for (let month in data) {
+    let bar = document.createElement('li');
+    bar.textContent = `${month}: ${data[month]} hours`;
+    bar.style.width = (data[month] * scale) + '%'; // Scale the width according to data
+    chart.appendChild(bar);
+  }
+});

@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-/* Grid containers */
 
 
 /* Grid containers */
@@ -25,22 +24,10 @@
       "Log";
   }
 }
-/* Media query for screens with a max-width of 768px */
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr; /* Stack all columns on top of each other */
-    grid-template-rows: auto; /* Adjust row size to fit content */
-    grid-template-areas: 
-      "header"
-      "Profile"
-      "Cal"
-      "Log";
-  }
-}
 
 .Profile {  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 0.6fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr; /* Adjusted row sizes to be smaller */
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -49,20 +36,28 @@
     "graph-2 graph-2 graph-2";
   grid-area: Profile;
 }
-
-.pic { grid-area: pic;  
+.pic {
+  grid-area: pic;  
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden; /* Hide overflowing content */
   border-radius: 50%; /* Make the container circular */
-  width: 100%; /* Adjust the width of the circular container */
-  height: auto; /* Adjust the height of the circular container */}
+  /* Set specific size for the container if you want to enforce a smaller image */
+  width: 150px; /* Example fixed width, adjust as needed */
+  height: 150px; /* Example fixed height, adjust as needed */
+}
 
 .pic img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 50%; /* Make the image circular */
+  /* Remove width and height attributes to allow the image to scale within the container */
+}
+
+/* Additional styles to ensure the image scales down properly while maintaining the aspect ratio */
+.pic img {
+  object-fit: cover; /* This will cover the area of the container while maintaining the aspect ratio */
 }
 
 .graph-1 { grid-area: graph-1; }
@@ -76,7 +71,7 @@
   
   body {
     font-family: "Open Sans", Arial;
-    background: #EEE;
+    background: #FFCC6D;
   }
   main {
     width: 400px;
@@ -176,6 +171,30 @@
   
 
 .graph-2 { grid-area: graph-2; }
+/*bar chart*/
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+#chart {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#chart li {
+  background: #79a6d2;
+  padding: 10px;
+  margin: 5px 0;
+  color: white;
+  width: 0; /* Start at 0 width, will be animated with JS */
+  transition: width 1s ease-in-out;
+}
 
 /*Logs */.Log {  
   display: flex; /* Use flexbox to stack log boxes vertically */
@@ -201,13 +220,10 @@
 }
 
 .Title { grid-area: Title; }
-.img { grid-area: img; }
-.info { grid-area: info; }
-
 .log-1 h3 {
   text-align: center; /* Center the title */
 }
-
+.img { grid-area: img; }
 .log-1 img {
   width: 100%;
   height: auto;
@@ -215,45 +231,36 @@
   padding-bottom: 10px; /* Padding at the bottom of the image */
   padding-right: 30px; 
 }
+.info { grid-area: info; }
 
 .log-1 .info p {
   text-align: justify; /* text beside the image */
   padding-top: 40px;    /* Padding at the top */
 }
-
-.log-1, .log-2, .log-3 {  
-  width: auto;
-  height: auto;
-  padding: 50px;
-  border: 10px solid red;
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: auto; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "Title Title Title"
-    "img img info"; 
-}
-
+/*log 2*/
 .Title { grid-area: Title; }
-.img { grid-area: img; }
-.info { grid-area: info; }
-
-.log-1 h3 {
+.log-2 h3 {
   text-align: center; /* Center the title */
 }
-
-.log-1 img {
+.img { grid-area: img; }
+.log-2 img {
   width: 100%;
   height: auto;
   padding-top: 30px;    /* Padding at the top of the image */
   padding-bottom: 10px; /* Padding at the bottom of the image */
-  padding-right: 30px; /* Add semicolon at the end */
+  padding-right: 30px; 
 }
+.info { grid-area: info; }
 
-.log-1 .info p {
+.log-2 .info p {
   text-align: justify; /* text beside the image */
   padding-top: 40px;    /* Padding at the top */
+}
+
+/*log 3*/
+.Title { grid-area: Title; }
+.log-3 h3 {
+  text-align: center; /* Center the title */
 }
 
 .log-4 { grid-area: log-4; }
@@ -269,7 +276,9 @@
     ". . notification"
     ". . .";
   grid-area: header;
-   background-color: #B38B00; /* Add your desired color here */
+  margin: 0px;
+  background-color: #FFA500; /* Add your desired color here */
+
 }
 
 .notification { grid-area: notification; }
