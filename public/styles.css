@@ -42,7 +42,7 @@
 
 .graph-1 { grid-area: graph-1; }
 
-
+/*pie graph styles*/
   @keyframes bake-pie {
     from {
       transform: rotate(0deg) translate3d(0,0,0);
@@ -167,7 +167,7 @@
   padding: 50px;
   border: 10px solid red;
   display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(2, 1fr); 
   grid-template-rows: auto; 
   gap: 0px 0px; 
   grid-template-areas: 
