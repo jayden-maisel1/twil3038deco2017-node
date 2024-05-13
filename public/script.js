@@ -1,7 +1,7 @@
 // Set the current date
 let newDateFunction = new Date();
 
-// Function to render the calendar
+//  Function to render the calendar
 function renderDate(){
     // Set the first day of the current month
     newDateFunction.setDate(1);
