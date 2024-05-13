@@ -157,32 +157,42 @@
               </div>
       
           </div>
-  <!-- Popup container -->
-  <div class="popup" id="popup">
-    <p id="popupDate">
-        <span>Date: </span>
-        <span id="selectedDate"> </span>
-    </p>
-    <textarea id="description" placeholder="Description"></textarea>
-    <div class="exercise">
-        <label for="exercise">Exercise:</label>
-        <select id="exercise">
-            <option value="running">Running</option>
-            <option value="cycling">Cycling</option>
-            <option value="swimming">Swimming</option>
-            <!-- Add more exercise options here -->
-        </select>
+<!-- Popup container -->
+<div class="popup" id="popup">
+  <p id="popupDate">Popup content</p>
+  <label for="description">Description:</label>
+  <textarea id="description" placeholder="Description of activity"></textarea>
+  <div class="exercise">
+  <div class="exercise-info">
+    <label for="exercise">Exercise:</label>
+    <select id="exercise" name="exercise">
+      <option value="running">Running</option>
+      <option value="cycling">Cycling</option>
+      <option value="swimming">Swimming</option>
+      <!-- Add more options as needed -->
+    </select>
+    <label for="duration">Duration:</label>
+    <div class="time-input">
+      <input type="number" id="hours" name="hours" min="0" max="23" placeholder="HH">
     </div>
-    <div class="duration">
-        <label for="hours">Hours:</label>
-        <input type="number" id="hours" min="0" max="24" value="0">
-        <label for="mins">Minutes:</label>
-        <input type="number" id="mins" min="0" max="59" value="0">
+    <div class="time-input">
+      <input type="number" id="minutes" name="minutes" min="0" max="59" placeholder="MM">
     </div>
-    <div class="effort">
-        <label for="effort">Effort:</label>
-        <input type="range" id="effort" min="1" max="10" value="5">
+    <label for="effort">Effort:</label>
+    <input type="range" id="effort" name="effort" min="0" max="10" step="1" value="5">
+    <label for="felt">Felt:</label>
+
+    <!-- Add smiley faces or emojis for different options -->
+    <div class="smiley-icons">
+      <input type="radio" id="sad" name="mood" value="sad">
+      <label for="sad">😞</label>
+      <input type="radio" id="medium" name="mood" value="medium">
+      <label for="medium">😐</label>
+      <input type="radio" id="happy" name="mood" value="happy">
+      <label for="happy">😊</label>
     </div>
+  </div>
+  <button id="closePopupBtn">+</button>
 </div>
 
 <script src="script.js"></script>

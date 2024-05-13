@@ -448,7 +448,7 @@ body{
     opacity: 1;
 }
 
-/* Popup container */
+/* Popup container *//* Popup container */
 .popup {
   display: none; /* Initially hidden */
   position: fixed;
@@ -456,7 +456,8 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
-  width: 400px; /* Adjust width as needed */
+  width: 500px; /* Adjust width as needed */
+  height: 550px; /* Adjust height as needed */
   padding: 20px;
   border-radius: 10px;
   color: #fff;
@@ -467,18 +468,119 @@ body{
   width: 100%;
   margin-bottom: 10px;
 }
-
-.popup .exercise,
-.popup .duration,
-.popup .effort {
+label[for="duration"] {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.popup label {
+.time-input {
   display: inline-block;
-  width: 100px;
-  text-align: right;
+  width: 60px;
   margin-right: 10px;
+}
+
+#hours, #minutes {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.exercise-info {
+  margin-top: 20px;
+}
+
+.exercise-info label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.exercise-info input,
+.exercise-info select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.exercise-info input[type="range"] {
+  width: 80%;
+}
+
+.smiley-icons {
+  margin-top: 10px;
+}
+
+.smiley-icons input[type="radio"] {
+  display: none;
+}
+
+.smiley-icons label {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #eee;
+}
+
+
+
+#closePopupBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Upload popup 2*/
+#uploadPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+#imageUpload {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Skip buttons */
+.skip-buttons {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.skip-buttons button {
+  margin: 0 10px;
 }
 
 
