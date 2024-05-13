@@ -17,6 +17,8 @@
           <div class="pic">        
             <img src="https://picsum.photos/500" alt="Profile pic">
           </div>
+          <!-- graph containers -->
+
           <div class="graph-1">
             <h1>Activity Breakdown</h1>
   <section>
@@ -49,11 +51,13 @@
           </div>
           <div class="graph-2">
           <h1>Monthly time spent</h1>
-          <div class="chart-container">
-            <ul id="chart"></ul>
+          <div class="chart-container" id="activity-chart-container">
+            <ul id="activity-chart"></ul>
           </div>
         </div>
         </div>
+        <!-- Activity log container -->
+
         <div class="Log">
           <div class="log-1"> 
             <div class="Title">    <h3>Activities Logged</h3> </div> 
@@ -86,7 +90,7 @@
           </div>
         </div>
         <div class="Cal"></div>
-              
+<!-- Calendar container -->
           <div class="inner-container">
               <div class="calendar">
       
@@ -168,17 +172,17 @@
 <!-- Popup container -->
 <div class="popup" id="popup">
   <p id="popupDate">Popup content</p>
+  <div class="exercise">
+    <div class="exercise-info">
+      <label for="exercise">Exercise:</label>
+      <select id="exercise" name="exercise">
+        <option value="running">Running</option>
+        <option value="cycling">Cycling</option>
+        <option value="swimming">Swimming</option>
+        <!-- Add more options as needed -->
+      </select>
   <label for="description">Description:</label>
   <textarea id="description" placeholder="Description of activity"></textarea>
-  <div class="exercise">
-  <div class="exercise-info">
-    <label for="exercise">Exercise:</label>
-    <select id="exercise" name="exercise">
-      <option value="running">Running</option>
-      <option value="cycling">Cycling</option>
-      <option value="swimming">Swimming</option>
-      <!-- Add more options as needed -->
-    </select>
     <label for="duration">Duration:</label>
     <div class="time-input">
       <input type="number" id="hours" name="hours" min="0" max="23" placeholder="HH">

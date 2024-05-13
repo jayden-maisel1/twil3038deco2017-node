@@ -170,31 +170,41 @@
   }
   
 
-.graph-2 { grid-area: graph-2; }
-/*bar chart*/
-.chart-container {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: #f9f9f9;
-}
-
-#chart {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#chart li {
-  background: #79a6d2;
-  padding: 10px;
-  margin: 5px 0;
-  color: white;
-  width: 0; /* Start at 0 width, will be animated with JS */
-  transition: width 1s ease-in-out;
-}
+  .graph-2 {
+    grid-area: graph-2;
+    display: grid;
+    grid-template-rows: auto auto; /* Two rows for each chart */
+    gap: 20px; /* Space between charts */
+  }
+  
+  /* Adjust the max-width of the chart containers to match the pie chart size */
+  .chart-container,
+  #activity-chart-container {
+    width: 100%;
+    max-width: 200px; /* Match the width of the pie chart */
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #f9f9f9;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    text-align: center;
+  }
+  
+  #activity-chart {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #activity-chart li {
+    background: #79a6d2;
+    padding: 10px;
+    margin: 5px 0;
+    color: white;
+    width: 0; /* Start at 0 width, will be animated with JS */
+    transition: width 1s ease-in-out;
+  }
+  
 
 /*Logs */.Log {  
   display: flex; /* Use flexbox to stack log boxes vertically */
@@ -267,7 +277,7 @@
 
 
 .header {  display: grid;
-  grid-template-columns: 1fr 1.7fr 0.3fr;
+  grid-template-columns: 0.1fr;
   grid-template-rows: 0.3fr 2.3fr 0.4fr;
   gap: 0px 0px;
   grid-auto-flow: row;

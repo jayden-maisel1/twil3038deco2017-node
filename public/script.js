@@ -187,31 +187,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 //bar chart 
+// Additional script to populate the second bar chart
 document.addEventListener('DOMContentLoaded', function() {
-  const data = {
+  const activityData = { /* Replace with your actual data */
     'January': 20,
     'February': 18,
     'March': 22,
-    'April': 15,
-    'May': 25,
-    'June': 10,
-    'July': 18,
-    'August': 20,
-    'September': 17,
-    'October': 23,
-    'November': 19,
-    'December': 21
+    // ... rest of the months
   };
 
-  const chart = document.getElementById('chart');
+  const activityChart = document.getElementById('activity-chart');
+  const maxActivityValue = Math.max(...Object.values(activityData));
+  const activityScale = 100 / maxActivityValue; // Scale bars to fit in the container
 
-  const maxValue = Math.max(...Object.values(data));
-  const scale = 100 / maxValue; // Scale bars to fit in the container
-
-  for (let month in data) {
+  for (let month in activityData) {
     let bar = document.createElement('li');
-    bar.textContent = `${month}: ${data[month]} hours`;
-    bar.style.width = (data[month] * scale) + '%'; // Scale the width according to data
-    chart.appendChild(bar);
+    bar.textContent = `${month}: ${activityData[month]} units`; // Replace 'units' with actual unit of measurement
+    bar.style.width = (activityData[month] * activityScale) + '%'; // Scale the width according to data
+    activityChart.appendChild(bar);
   }
 });
