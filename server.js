@@ -16,7 +16,11 @@
 
 
 //chat gtp intergrating above and data model provided const express = require('express');
+const express = require('express');
+
 const app = express();
+
+app.use(express.static('public')) //update bellow
 
 // Serve static files from the "dist" directory
 app.use(express.static(__dirname + '/dist'));
