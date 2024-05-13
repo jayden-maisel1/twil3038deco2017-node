@@ -160,10 +160,31 @@
   <!-- Popup container -->
   <div class="popup" id="popup">
     <p id="popupDate">
-      Popup content
+        <span>Date: </span>
+        <span id="selectedDate"> </span>
     </p>
+    <textarea id="description" placeholder="Description"></textarea>
+    <div class="exercise">
+        <label for="exercise">Exercise:</label>
+        <select id="exercise">
+            <option value="running">Running</option>
+            <option value="cycling">Cycling</option>
+            <option value="swimming">Swimming</option>
+            <!-- Add more exercise options here -->
+        </select>
+    </div>
+    <div class="duration">
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" min="0" max="24" value="0">
+        <label for="mins">Minutes:</label>
+        <input type="number" id="mins" min="0" max="59" value="0">
+    </div>
+    <div class="effort">
+        <label for="effort">Effort:</label>
+        <input type="range" id="effort" min="1" max="10" value="5">
+    </div>
 </div>
-</div>
+
 <script src="script.js"></script>
 <script src="app.js"></script>
 </body>

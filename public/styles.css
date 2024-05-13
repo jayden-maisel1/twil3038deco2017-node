@@ -456,12 +456,31 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
-  width: 300px; /* Adjust width as needed */
+  width: 400px; /* Adjust width as needed */
   padding: 20px;
   border-radius: 10px;
   color: #fff;
   text-align: center;
 }
+
+.popup textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.popup .exercise,
+.popup .duration,
+.popup .effort {
+  margin-bottom: 10px;
+}
+
+.popup label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+
 
 /* Show popup when it's visible */
 .popup.show {
