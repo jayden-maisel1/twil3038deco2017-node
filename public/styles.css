@@ -2,15 +2,15 @@
 /* Grid containers*/
 
 
+/* Grid containers */
 .container {
   display: grid; 
-  grid-auto-columns: 1fr; 
-  grid-template-columns: 0.9fr 1.2fr 0.9fr; 
-  grid-template-rows: 0.3fr 1.7fr; 
-  gap: 40px 0px; 
+  grid-template-columns: 0.9fr 1.2fr 0.9fr; /* Left, Center, Right column sizes */
+  grid-template-rows: 0.3fr 1.7fr; /* Header and Content row sizes */
+  gap: 40px 0px; /* Vertical and Horizontal gaps */
   grid-template-areas: 
     "header header header"
-    "Profile Cal Log"; 
+    "Profile Cal Log"; /* Assign the middle area to Cal and the rightmost area to Log */
 }
 
 .Profile {  display: grid;
@@ -157,6 +157,8 @@
   flex-direction: column; /* Stack items vertically */
   gap: 20px; /* Add space between log boxes */
   padding: 20px; /* Add padding if needed */
+  grid-area: Log; /* Assign Logs to the right column */
+  /* Your existing Log styles */
 }
 
 .log-1, .log-2, .log-3 {  
