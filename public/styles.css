@@ -214,6 +214,20 @@
   grid-area: Log; /* Assign Logs to the right column */
   /* Your existing Log styles */
 }
+.log-entry {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.log-entry h3 {
+  margin-top: 0;
+}
+
+.log-entry p {
+  margin: 5px 0;
+}
 
 .log-1, .log-2, .log-3 {  
   width: auto;
@@ -502,30 +516,35 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: black;
+  background-color: #ffff;
   width: 500px; /* Adjust width as needed */
   height: 550px; /* Adjust height as needed */
   padding: 20px;
   border-radius: 10px;
-  color: #fff;
+  color: #cf9145;
   text-align: center;
 }
 
 .popup textarea {
   width: 100%;
   margin-bottom: 10px;
+  color: #cf9145;
+
 }
 label[for="duration"] {
   display: block;
   margin-bottom: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: #cf9145;
 }
 
 .time-input {
   display: inline-block;
   width: 60px;
   margin-right: 10px;
+  color: #cf9145;
+
 }
 
 #hours, #minutes {
@@ -534,16 +553,22 @@ label[for="duration"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  color: #cf9145;
+
 }
 
 
 .exercise-info {
   margin-top: 20px;
+  color: #cf9145;
+
 }
 
 .exercise-info label {
   display: block;
   margin-bottom: 5px;
+  color: #cf9145;
+
 }
 
 .exercise-info input,
@@ -558,6 +583,8 @@ label[for="duration"] {
 
 .exercise-info input[type="range"] {
   width: 80%;
+  color: #cf9145;
+
 }
 
 .smiley-icons {
@@ -570,6 +597,7 @@ label[for="duration"] {
 
 .smiley-icons label {
   display: inline-block;
+  color: #cf9145;
   width: 30px;
   height: 30px;
   font-size: 24px;

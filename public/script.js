@@ -166,44 +166,120 @@ function iterateSlices(sliceSize, pieElement, offset, dataCount, sliceCount, col
   createPie(".pieID.legend", ".pieID.pie");
   
 
-//popup
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all date elements
-    const dates = document.querySelectorAll('.dates div');
-
-    // Get the popup element
-    const popup = document.getElementById('popup');
-
-    // Get the popup date element
-    const popupDate = document.getElementById('popupDate');
-
-    // Add event listener to each date element
-    dates.forEach(date => {
-        date.addEventListener('click', function() {
-            // Display the popup when a date is clicked
-            popupDate.textContent = `Date is ${date.textContent}`; // Set the popup content to the clicked date
-            popup.classList.toggle('show');
-        });
-    });
-});
 //bar chart 
-// Additional script to populate the second bar chart
 document.addEventListener('DOMContentLoaded', function() {
-  const activityData = { /* Replace with your actual data */
+  const data = {
     'January': 20,
     'February': 18,
     'March': 22,
-    // ... rest of the months
+    'April': 15,
+    'May': 25,
+    'June': 10,
+    'July': 18,
+    'August': 20,
+    'September': 17,
+    'October': 23,
+    'November': 19,
+    'December': 21
   };
 
-  const activityChart = document.getElementById('activity-chart');
-  const maxActivityValue = Math.max(...Object.values(activityData));
-  const activityScale = 100 / maxActivityValue; // Scale bars to fit in the container
+  const chartMonths = document.getElementById('chart-months');
+  const chartBars = document.getElementById('chart-bars');
 
-  for (let month in activityData) {
-    let bar = document.createElement('li');
-    bar.textContent = `${month}: ${activityData[month]} units`; // Replace 'units' with actual unit of measurement
-    bar.style.width = (activityData[month] * activityScale) + '%'; // Scale the width according to data
-    activityChart.appendChild(bar);
+  const maxValue = Math.max(...Object.values(data));
+  const scale = 300 / maxValue; // Scale bars to fit in the container height
+
+  for (let month in data) {
+    let monthCell = document.createElement('td');
+    monthCell.textContent = month;
+    chartMonths.appendChild(monthCell);
+
+    let barCell = document.createElement('td');
+    let bar = document.createElement('div');
+    bar.classList.add('bar');
+    bar.style.height = (data[month] * scale) + 'px'; // Scale the height according to data
+    bar.textContent = data[month]; // Display the data value inside the bar
+    barCell.appendChild(bar);
+    chartBars.appendChild(barCell);
   }
+});
+
+
+
+
+/////////////chatgtp//popup
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all date elements
+  const dates = document.querySelectorAll('.dates div');
+
+  // Get the popup element
+  const popup = document.getElementById('popup');
+
+  // Get the popup date element
+  const popupDate = document.getElementById('popupDate');
+
+  // Add event listener to each date element
+  dates.forEach(date => {
+      date.addEventListener('click', function() {
+          // Display the popup when a date is clicked
+          popupDate.textContent = `Date is ${date.textContent}`; // Set the popup content to the clicked date
+          popup.classList.add('show'); // Change to add instead of toggle to ensure it always shows
+      });
+  });
+
+  // Get close popup button
+  const closePopupBtn = document.getElementById('closePopupBtn');
+
+  // Function to handle closing the popup and storing data
+  function closePopupAndStoreData() {
+      // Close the popup (hide the form)
+      popup.classList.remove('show');
+
+      // Storing data and displaying activity log
+      // Capture input values
+      const exercise = document.getElementById('exercise').value;
+      const description = document.getElementById('description').value;
+      const hours = document.getElementById('hours').value;
+      const minutes = document.getElementById('minutes').value;
+      const effort = document.getElementById('effort').value;
+      const mood = document.querySelector('input[name="mood"]:checked').value;
+
+      // Create log entry HTML
+      const logEntry = document.createElement('div');
+      logEntry.classList.add('log-entry');
+      logEntry.innerHTML = `
+          <h3>${exercise}</h3>
+          <p>Description: ${description}</p>
+          <p>Duration: ${hours} hours ${minutes} minutes</p>
+          <p>Effort: ${effort}</p>
+          <p>Mood: ${mood}</p>
+      `;
+
+      // Append log entry to activity log
+      const activityLog = document.querySelector('.Log');
+      activityLog.appendChild(logEntry);
+
+      // Optional: Save to local storage
+      const activityData = {
+          exercise,
+          description,
+          hours,
+          minutes,
+          effort,
+          mood
+      };
+
+      // Get stored data from local storage
+      const storedData = localStorage.getItem('activityData');
+      const parsedData = storedData ? JSON.parse(storedData) : [];
+
+      // Add new data to existing data
+      parsedData.push(activityData);
+
+      // Save updated data to local storage
+      localStorage.setItem('activityData', JSON.stringify(parsedData));
+  }
+
+  // Add event listener to the close button in the popup form
+  closePopupBtn.addEventListener('click', closePopupAndStoreData);
 });
