@@ -205,81 +205,87 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-
-/////////////chatgtp//popup
+// popup
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all date elements
   const dates = document.querySelectorAll('.dates div');
-
-  // Get the popup element
   const popup = document.getElementById('popup');
-
-  // Get the popup date element
   const popupDate = document.getElementById('popupDate');
 
-  // Add event listener to each date element
   dates.forEach(date => {
       date.addEventListener('click', function() {
-          // Display the popup when a date is clicked
-          popupDate.textContent = `Date is ${date.textContent}`; // Set the popup content to the clicked date
-          popup.classList.add('show'); // Change to add instead of toggle to ensure it always shows
+          popupDate.textContent = `Date is ${date.textContent}`;
+          popup.classList.add('show');
       });
   });
 
-  // Get close popup button
   const closePopupBtn = document.getElementById('closePopupBtn');
 
-  // Function to handle closing the popup and storing data
-  function closePopupAndStoreData() {
-      // Close the popup (hide the form)
+  async function closePopupAndStoreData() {
       popup.classList.remove('show');
 
-      // Storing data and displaying activity log
-      // Capture input values
       const exercise = document.getElementById('exercise').value;
       const description = document.getElementById('description').value;
-      const hours = document.getElementById('hours').value;
-      const minutes = document.getElementById('minutes').value;
-      const effort = document.getElementById('effort').value;
-      const mood = document.querySelector('input[name="mood"]:checked').value;
+      const hours = parseInt(document.getElementById('hours').value);
+      const minutes = parseInt(document.getElementById('minutes').value);
+      const effort = parseInt(document.getElementById('effort').value);
+      const mood = parseInt(document.querySelector('input[name="mood"]:checked').value);
 
-      // Create log entry HTML
-      const logEntry = document.createElement('div');
-      logEntry.classList.add('log-entry');
-      logEntry.innerHTML = `
-          <h3>${exercise}</h3>
-          <p>Description: ${description}</p>
-          <p>Duration: ${hours} hours ${minutes} minutes</p>
-          <p>Effort: ${effort}</p>
-          <p>Mood: ${mood}</p>
-      `;
+      const duration = hours * 60 + minutes; // Convert hours and minutes to total minutes
 
-      // Append log entry to activity log
-      const activityLog = document.querySelector('.Log');
-      activityLog.appendChild(logEntry);
-
-      // Optional: Save to local storage
       const activityData = {
-          exercise,
-          description,
-          hours,
-          minutes,
-          effort,
-          mood
+          name: exercise,
+          category: description,
+          image: "https://picsum.photos/200/300", // Placeholder image URL
+          duration,
+          feeling: mood,
+          intensity: effort,
+          calories: 0 // You can calculate this based on some formula if needed
       };
 
-      // Get stored data from local storage
-      const storedData = localStorage.getItem('activityData');
-      const parsedData = storedData ? JSON.parse(storedData) : [];
+      // Send data to server
+      const response = await fetch('/activities', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(activityData)
+      });
 
-      // Add new data to existing data
-      parsedData.push(activityData);
-
-      // Save updated data to local storage
-      localStorage.setItem('activityData', JSON.stringify(parsedData));
+      if (response.ok) {
+          console.log('Activity saved successfully');
+          fetchActivities(); // Fetch and update activities log
+      } else {
+          console.error('Error saving activity');
+      }
   }
 
-  // Add event listener to the close button in the popup form
   closePopupBtn.addEventListener('click', closePopupAndStoreData);
+
+  async function fetchActivities() {
+      const response = await fetch('/activities');
+      const activities = await response.json();
+
+      const activityLog = document.querySelector('.Log');
+      activityLog.innerHTML = ''; // Clear existing log entries
+
+      activities.forEach(activity => {
+          const logEntry = document.createElement('div');
+          logEntry.classList.add('log-entry');
+          logEntry.innerHTML = `
+              <div class="Title"><h3>Activities Logged</h3></div>
+              <div class="img"><img src="${activity.image}" alt="${activity.name}"></div>
+              <div class="info">
+                  <h3>${activity.name}</h3>
+                  <p>Description: ${activity.category}</p>
+                  <p>Duration: ${Math.floor(activity.duration / 60)} hours ${activity.duration % 60} minutes</p>
+                  <p>Effort: ${activity.intensity}</p>
+                  <p>Mood: ${activity.feeling}</p>
+              </div>
+          `;
+          activityLog.appendChild(logEntry);
+      });
+  }
+
+  // Fetch activities on page load
+  fetchActivities();
 });

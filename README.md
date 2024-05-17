@@ -1,12 +1,18 @@
 # Node Server
 
 This is a demo application running on a basic node server using the express framework.
+MARKUP DEV
+
+
+
+REFERENCES
 calendar code sourced from https://codepen.io/CreativeCoder111/pen/NWOdyVK 
 Reset css code copied from https://www.lucedigitale.com/blog/css-reset-to-copy-paste/
 (https://grid.layoutit.com/) used for layout
 How to create a popuphttps://www.w3schools.com/howto/howto_js_popup.asp
 pie graph https://codepen.io/ejsado/pen/yLNMPG
 bar graph https://codepen.io/team/carbon/pen/OzBKKN
+Responsive design queries https://www.w3schools.com/html/html_responsive.asp
 
 
 
